@@ -21,6 +21,7 @@ import CardWrapper from "./CardWrapper";
 import FormError from "../FormError";
 import FormSuccess from "../FormSuccess";
 import { EyeIcon, EyeOff } from "lucide-react";
+import { register } from "@/actions/register";
 
 type Props = {};
 
@@ -44,8 +45,10 @@ const RegisterForm = (props: Props) => {
     setSuccess("");
 
     startTransition(() => {
-      setError("");
-      setSuccess("");
+      register(values).then((res) => {
+        setError(res?.error);
+        setSuccess(res?.success);
+      });
     });
   };
 
