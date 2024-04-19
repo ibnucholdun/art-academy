@@ -40,7 +40,7 @@ export const login = async (
     await signIn("credentials", {
       email,
       password,
-      redirectTo: callbackUrl || "/home",
+      redirectTo: callbackUrl || "/",
     });
 
     return { success: "Login successful!" };
