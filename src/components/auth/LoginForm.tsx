@@ -58,7 +58,7 @@ const LoginForm = (props: Props) => {
           if (res?.success) setSuccess(res?.success);
         })
         .catch((error) => {
-          setError("Something went wrong. Please try again later.");
+          setError("Something went wrong!");
         });
     });
   };
@@ -67,7 +67,8 @@ const LoginForm = (props: Props) => {
     <CardWrapper
       headerLabel="Welcome back in Serrla!"
       backButtonHref="/auth/register"
-      backButtonLabel="Don't have an account?">
+      backButtonLabel="Don't have an account?"
+      showSocial>
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-4">

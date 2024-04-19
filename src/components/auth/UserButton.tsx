@@ -18,10 +18,13 @@ const UserButton: React.FC<Props> = ({ user }) => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src={user?.image || ""} />
-          <AvatarFallback className="bg-white">
-            <User className="text-brown600 h-6 w-6" />
-          </AvatarFallback>
+          {user.image === null ? (
+            <AvatarFallback className="bg-white">
+              <User className="text-brown600 h-6 w-6" />
+            </AvatarFallback>
+          ) : (
+            <AvatarImage src={user?.image} />
+          )}
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40 bg-brown300" align="end">
