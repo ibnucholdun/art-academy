@@ -53,8 +53,7 @@ const NewVerificationForm = (props: Props) => {
       backButtonHref="/auth/login">
       <div className="flex items-center w-full justify-center">
         {!success && !error && (
-          //   <Spinner className="text-[#6f3823]" size="large" />
-          <>loading</>
+          <Spinner className="text-[#6f3823]" size="large" />
         )}
         <FormSuccess message={success} />
         {!success && <FormError message={error} />}

@@ -21,14 +21,23 @@ import CardWrapper from "./CardWrapper";
 import FormError from "../FormError";
 import FormSuccess from "../FormSuccess";
 import { EyeIcon, EyeOff } from "lucide-react";
+import { login } from "@/actions/login";
+import { useSearchParams } from "next/navigation";
 
 type Props = {};
 
 const LoginForm = (props: Props) => {
+  const searchParams = useSearchParams();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [visible, setVisible] = useState(false);
   const [isPending, startTransition] = useTransition();
+
+  const callbackUrl = searchParams.get("callbackUrl");
+  const urlError =
+    searchParams.get("error") === "OAuthAccountNotLinked"
+      ? "Email already in use with different provider!"
+      : "";
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -43,8 +52,14 @@ const LoginForm = (props: Props) => {
     setSuccess("");
 
     startTransition(() => {
-      setError("");
-      setSuccess("");
+      login(values, callbackUrl)
+        .then((res) => {
+          if (res?.error) setError(res?.error);
+          if (res?.success) setSuccess(res?.success);
+        })
+        .catch((error) => {
+          setError("Something went wrong. Please try again later.");
+        });
     });
   };
 
@@ -67,6 +82,7 @@ const LoginForm = (props: Props) => {
                       type="email"
                       {...field}
                       placeholder="serrla@academy.com"
+                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -85,8 +101,10 @@ const LoginForm = (props: Props) => {
                         type={visible ? "text" : "password"}
                         {...field}
                         placeholder="********"
+                        disabled={isPending}
                       />
                       <Button
+                        type="button"
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 p-0"
                         variant="link"
                         onClick={() => setVisible(!visible)}>
@@ -103,9 +121,9 @@ const LoginForm = (props: Props) => {
               )}
             />
           </div>
-          <FormError message={error} />
+          <FormError message={error || urlError} />
           <FormSuccess message={success} />
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full" disabled={isPending}>
             Login
           </Button>
         </form>

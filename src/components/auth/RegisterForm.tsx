@@ -110,6 +110,7 @@ const RegisterForm = (props: Props) => {
                         placeholder="********"
                       />
                       <Button
+                        type="button"
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 p-0"
                         variant="link"
                         onClick={() => setVisible(!visible)}>
