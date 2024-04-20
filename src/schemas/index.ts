@@ -1,4 +1,5 @@
 import * as z from "zod";
+import { UserRole } from "@prisma/client";
 
 export const LoginSchema = z.object({
   email: z.string().email({
@@ -19,4 +20,10 @@ export const RegisterSchema = z.object({
   name: z.string().min(1, {
     message: "Fullname is required",
   }),
+});
+
+export const EditUserSchema = z.object({
+  name: z.optional(z.string()),
+  role: z.enum([UserRole.USER, UserRole.ADMIN]),
+  email: z.optional(z.string().email()),
 });
