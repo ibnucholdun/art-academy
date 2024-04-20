@@ -27,3 +27,17 @@ export const getUserByUserId = async (userId: string) => {
     return null;
   }
 };
+
+export const getUserAll = async () => {
+  try {
+    const users = await prisma.user.findMany({
+      orderBy: {
+        name: "asc",
+      },
+    });
+
+    return users;
+  } catch (error) {
+    return null;
+  }
+};
