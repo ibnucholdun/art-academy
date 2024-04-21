@@ -2,6 +2,7 @@
 
 import * as z from "zod";
 import React from "react";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,6 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -34,8 +36,14 @@ const NewCoursePage = (props: Props) => {
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = (values: z.infer<typeof FormTitleSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof FormTitleSchema>) => {
+    try {
+      const response = await axios.post("/api/course", values);
+      router.push(`/admin/courses/${response.data.id}`);
+      toast.success("Course created successfully");
+    } catch (error) {
+      toast.error("Something went wrong!");
+    }
   };
 
   return (
