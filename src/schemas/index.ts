@@ -33,3 +33,15 @@ export const FormTitleSchema = z.object({
     message: "Title is required",
   }),
 });
+
+export const FormDescriptionSchema = z.object({
+  description: z.string().min(1, {
+    message: "Description is required",
+  }),
+});
+
+export const FormImageSchema = z.object({
+  imageUrl: z.string().min(1, {
+    message: "Image is required",
+  }),
+});

@@ -4,9 +4,11 @@ import { redirect } from "next/navigation";
 import { LayoutDashboard } from "lucide-react";
 
 import { currentUser } from "@/lib/auth";
+
 import TitleForm from "./_components/TitleForm";
 import { IconBadge } from "@/components/IconBadge";
 import DescriptionForm from "./_components/DescriptionForm";
+import ImageForm from "./_components/ImageForm";
 
 type Props = {
   params: {
@@ -62,6 +64,7 @@ const CourseIdPage: React.FC<Props> = async ({ params }) => {
           </div>
           <TitleForm initialData={course} courseId={course.id} />
           <DescriptionForm initialData={course} courseId={course.id} />
+          <ImageForm initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>

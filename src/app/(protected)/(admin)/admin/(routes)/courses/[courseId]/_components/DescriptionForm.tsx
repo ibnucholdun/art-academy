@@ -20,17 +20,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import { Course } from "@prisma/client";
+import { FormDescriptionSchema } from "@/schemas";
 
 type Props = {
   initialData: Course;
   courseId: string;
 };
-
-const formSchema = z.object({
-  description: z.string().min(1, {
-    message: "Description is required",
-  }),
-});
 
 const DescriptionForm: React.FC<Props> = ({ initialData, courseId }) => {
   const router = useRouter();
@@ -38,8 +33,8 @@ const DescriptionForm: React.FC<Props> = ({ initialData, courseId }) => {
 
   const toggleEdit = () => setIsEditing((prev) => !prev);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof FormDescriptionSchema>>({
+    resolver: zodResolver(FormDescriptionSchema),
     defaultValues: {
       description: initialData?.description || "",
     },
@@ -47,7 +42,7 @@ const DescriptionForm: React.FC<Props> = ({ initialData, courseId }) => {
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof FormDescriptionSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
       toast.success("Course updated successfully");
