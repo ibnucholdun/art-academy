@@ -1,10 +1,12 @@
-import { IconBadge } from "@/components/IconBadge";
-import { currentUser } from "@/lib/auth";
-import prisma from "@/lib/prisma";
-import { LayoutDashboard } from "lucide-react";
-import { redirect } from "next/navigation";
 import React from "react";
+import prisma from "@/lib/prisma";
+import { redirect } from "next/navigation";
+import { LayoutDashboard } from "lucide-react";
+
+import { currentUser } from "@/lib/auth";
 import TitleForm from "./_components/TitleForm";
+import { IconBadge } from "@/components/IconBadge";
+import DescriptionForm from "./_components/DescriptionForm";
 
 type Props = {
   params: {
@@ -59,6 +61,7 @@ const CourseIdPage: React.FC<Props> = async ({ params }) => {
             <h2 className="text-xl">Customize your course</h2>
           </div>
           <TitleForm initialData={course} courseId={course.id} />
+          <DescriptionForm initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>
