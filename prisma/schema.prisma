@@ -51,3 +51,27 @@ model VerificationToken{
 
   @@unique([email, token])
 }
+
+model Course {
+  id        String @id @default(uuid())
+  userId    String
+  title     String @db.Text
+  description String? @db.Text
+  imageUrl String? @db.Text
+  price Float?
+  isPublished Boolean @default(false)
+
+  categoryId String?
+  category Category? @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+}
+
+model Category {
+  id        String @id @default(uuid())
+  name      String @unique
+  courses Course[]
+}

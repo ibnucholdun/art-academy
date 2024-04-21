@@ -27,3 +27,9 @@ export const EditUserSchema = z.object({
   role: z.enum([UserRole.USER, UserRole.ADMIN]),
   email: z.optional(z.string().email()),
 });
+
+export const FormTitleSchema = z.object({
+  title: z.string().min(1, {
+    message: "Title is required",
+  }),
+});
