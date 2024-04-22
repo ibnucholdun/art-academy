@@ -49,3 +49,7 @@ export const FormImageSchema = z.object({
 export const FormPriceSchema = z.object({
   price: z.coerce.number(),
 });
+
+export const FormAttachmentSchema = z.object({
+  url: z.string().min(1),
+});
