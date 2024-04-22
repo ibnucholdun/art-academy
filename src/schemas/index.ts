@@ -45,3 +45,7 @@ export const FormImageSchema = z.object({
     message: "Image is required",
   }),
 });
+
+export const FormPriceSchema = z.object({
+  price: z.coerce.number(),
+});
