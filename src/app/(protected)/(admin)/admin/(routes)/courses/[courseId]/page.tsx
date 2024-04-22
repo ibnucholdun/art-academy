@@ -17,6 +17,7 @@ import ImageForm from "./_components/ImageForm";
 import CategoryForm from "./_components/CategoryForm";
 import PriceForm from "./_components/PriceForm";
 import AttachmentForm from "./_components/AttachmentForm";
+import ChaptersForm from "./_components/ChapterForm";
 
 type Props = {
   params: {
@@ -36,6 +37,11 @@ const CourseIdPage: React.FC<Props> = async ({ params }) => {
       id: params.courseId,
     },
     include: {
+      chapters: {
+        orderBy: {
+          position: "asc",
+        },
+      },
       attachments: {
         orderBy: {
           createdAt: "desc",
@@ -60,6 +66,7 @@ const CourseIdPage: React.FC<Props> = async ({ params }) => {
     course.imageUrl,
     course.price,
     course.categoryId,
+    course.chapters.some((chapter) => chapter.isPublished),
   ];
 
   const totalFields = requiredFields.length;
@@ -101,7 +108,7 @@ const CourseIdPage: React.FC<Props> = async ({ params }) => {
               <IconBadge icon={ListChecks} />
               <h2 className="text-xl">Course chapters</h2>
             </div>
-            <div className="">TODO: CHAPTERS</div>
+            <ChaptersForm initialData={course} courseId={course.id} />
           </div>
           <div className="">
             <div className="flex items-center gap-x-2">
