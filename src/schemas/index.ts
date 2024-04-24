@@ -57,3 +57,7 @@ export const FormAttachmentSchema = z.object({
 export const FOrmChapterSchema = z.object({
   title: z.string().min(1),
 });
+
+export const FormAccessSchema = z.object({
+  isFree: z.boolean().default(false),
+});
