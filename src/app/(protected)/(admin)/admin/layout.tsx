@@ -13,7 +13,7 @@ const AdminDashboardLayout: React.FC<Props> = ({ children }) => {
       <div className="hidden md:flex h-full w-56  flex-col fixed inset-y-0 z-50">
         <Sidebar />
       </div>
-      <main className="md:pl-56 h-full pt-[80px] md:p-6">{children}</main>
+      <main className="md:pl-56 h-full pt-[80px] md:py-6 ">{children}</main>
     </div>
   );
 };
