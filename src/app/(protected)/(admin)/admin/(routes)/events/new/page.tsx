@@ -40,7 +40,7 @@ const NewCoursePage = (props: Props) => {
     try {
       const response = await axios.post("/api/events", values);
       router.push(`/admin/events/${response.data.id}`);
-      toast.success("Course created successfully");
+      toast.success("Event created successfully");
     } catch (error) {
       toast.error("Something went wrong!");
     }
