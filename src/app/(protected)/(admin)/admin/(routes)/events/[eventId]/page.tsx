@@ -8,6 +8,7 @@ import { currentUser } from "@/lib/auth";
 import { IconBadge } from "@/components/IconBadge";
 import EventTitleForm from "./_components/EventTitleForm";
 import EventDescriptionForm from "./_components/EventDescriptionForm";
+import EventImageForm from "./_components/EventImageForm";
 
 type Props = {
   params: {
@@ -63,6 +64,7 @@ const EventIdPage: React.FC<Props> = async ({ params }) => {
           </div>
           <EventTitleForm initialData={event} eventId={event.id} />
           <EventDescriptionForm initialData={event} eventId={event.id} />
+          <EventImageForm initialData={event} eventId={event.id} />
         </div>
       </div>
     </div>
