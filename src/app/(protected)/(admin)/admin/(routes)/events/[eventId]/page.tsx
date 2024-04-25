@@ -1,6 +1,11 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import { CalendarRange } from "lucide-react";
+import {
+  CalendarRange,
+  CircleDollarSign,
+  Clock,
+  MapPinned,
+} from "lucide-react";
 
 import prisma from "@/lib/prisma";
 import { currentUser } from "@/lib/auth";
@@ -9,6 +14,7 @@ import { IconBadge } from "@/components/IconBadge";
 import EventTitleForm from "./_components/EventTitleForm";
 import EventDescriptionForm from "./_components/EventDescriptionForm";
 import EventImageForm from "./_components/EventImageForm";
+import EventPriceForm from "./_components/EventPriceForm";
 
 type Props = {
   params: {
@@ -65,6 +71,29 @@ const EventIdPage: React.FC<Props> = async ({ params }) => {
           <EventTitleForm initialData={event} eventId={event.id} />
           <EventDescriptionForm initialData={event} eventId={event.id} />
           <EventImageForm initialData={event} eventId={event.id} />
+        </div>
+        <div className="space-y-6 ">
+          <div className="">
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={Clock} />
+              <h2 className="text-xl">Set time event</h2>
+            </div>
+            <p>TODO: Add time</p>
+          </div>
+          <div className="">
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={CircleDollarSign} />
+              <h2 className="text-xl">Sell your event</h2>
+            </div>
+            <EventPriceForm initialData={event} eventId={event.id} />
+          </div>
+          <div className="">
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={MapPinned} />
+              <h2 className="text-xl">Set location event</h2>
+            </div>
+            <p>TODO: Add location</p>
+          </div>
         </div>
       </div>
     </div>
