@@ -1,10 +1,13 @@
 import React from "react";
-import prisma from "@/lib/prisma";
 import { redirect } from "next/navigation";
-import { IconBadge } from "@/components/IconBadge";
 import { CalendarRange } from "lucide-react";
+
+import prisma from "@/lib/prisma";
 import { currentUser } from "@/lib/auth";
+
+import { IconBadge } from "@/components/IconBadge";
 import EventTitleForm from "./_components/EventTitleForm";
+import EventDescriptionForm from "./_components/EventDescriptionForm";
 
 type Props = {
   params: {
@@ -59,6 +62,7 @@ const EventIdPage: React.FC<Props> = async ({ params }) => {
             <h2 className="text-xl">Customize your event</h2>
           </div>
           <EventTitleForm initialData={event} eventId={event.id} />
+          <EventDescriptionForm initialData={event} eventId={event.id} />
         </div>
       </div>
     </div>
