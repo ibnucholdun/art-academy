@@ -1,6 +1,6 @@
 "use client";
 
-import { Book, Layout, Users } from "lucide-react";
+import { Book, CalendarRange, Layout, Users } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 
 const routes = [
@@ -18,6 +18,11 @@ const routes = [
     icon: Book,
     label: "Courses",
     href: "/admin/courses",
+  },
+  {
+    icon: CalendarRange,
+    label: "Events",
+    href: "/admin/events",
   },
 ];
 
