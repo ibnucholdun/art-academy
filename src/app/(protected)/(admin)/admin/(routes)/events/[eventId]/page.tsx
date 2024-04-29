@@ -16,6 +16,7 @@ import EventDescriptionForm from "./_components/EventDescriptionForm";
 import EventImageForm from "./_components/EventImageForm";
 import EventPriceForm from "./_components/EventPriceForm";
 import EventTimeForm from "./_components/EventTimeForm";
+import EventLocationForm from "./_components/EventLocationForm";
 
 type Props = {
   params: {
@@ -84,6 +85,7 @@ const EventIdPage: React.FC<Props> = async ({ params }) => {
           <div className="">
             <div className="flex items-center gap-x-2">
               <IconBadge icon={CircleDollarSign} />
+              <h2 className="text-xl">Set price event</h2>
             </div>
             <EventPriceForm initialData={event} eventId={event.id} />
           </div>
@@ -92,7 +94,7 @@ const EventIdPage: React.FC<Props> = async ({ params }) => {
               <IconBadge icon={MapPinned} />
               <h2 className="text-xl">Set location event</h2>
             </div>
-            <p>TODO: Add location</p>
+            <EventLocationForm initialData={event} eventId={event.id} />
           </div>
         </div>
       </div>

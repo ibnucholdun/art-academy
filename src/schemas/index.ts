@@ -69,3 +69,7 @@ export const FormVideoSchema = z.object({
 export const FormTimeSchema = z.object({
   time: z.date(),
 });
+
+export const FormLocationSchema = z.object({
+  location: z.string().min(1),
+});
