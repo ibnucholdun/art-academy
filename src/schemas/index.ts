@@ -65,3 +65,7 @@ export const FormAccessSchema = z.object({
 export const FormVideoSchema = z.object({
   videoUrl: z.string().min(1),
 });
+
+export const FormTimeSchema = z.object({
+  time: z.date(),
+});
