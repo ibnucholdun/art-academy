@@ -6,6 +6,7 @@ import HeroSection from "./HeroSection";
 import ListCourses from "./ListCourses";
 import ListTestimonials from "./ListTestimonials";
 import BannerStart from "./BannerStart";
+import ListEvents from "./ListEvents";
 
 type Props = {
   user: any;
@@ -32,6 +33,15 @@ const HomeView: React.FC<Props> = async ({ user }) => {
     },
   });
 
+  const events = await prisma.event.findMany({
+    where: {
+      isPublished: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
   return (
     <>
       <Navbar user={user} />
@@ -39,6 +49,7 @@ const HomeView: React.FC<Props> = async ({ user }) => {
       <ListCourses courses={courses} />
       <ListTestimonials />
       <BannerStart />
+      <ListEvents events={events} />
     </>
   );
 };
