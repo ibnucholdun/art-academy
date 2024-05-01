@@ -5,6 +5,7 @@ import Navbar from "@/app/(protected)/(user)/_components/Navbar";
 import HeroSection from "./HeroSection";
 import ListCourses from "./ListCourses";
 import ListTestimonials from "./ListTestimonials";
+import BannerStart from "./BannerStart";
 
 type Props = {
   user: any;
@@ -37,6 +38,7 @@ const HomeView: React.FC<Props> = async ({ user }) => {
       <HeroSection />
       <ListCourses courses={courses} />
       <ListTestimonials />
+      <BannerStart />
     </>
   );
 };
