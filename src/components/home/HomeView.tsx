@@ -7,6 +7,7 @@ import ListCourses from "./ListCourses";
 import ListTestimonials from "./ListTestimonials";
 import BannerStart from "./BannerStart";
 import ListEvents from "./ListEvents";
+import Footer from "@/app/(protected)/(user)/_components/Footer";
 
 type Props = {
   user: any;
@@ -50,6 +51,7 @@ const HomeView: React.FC<Props> = async ({ user }) => {
       <ListTestimonials />
       <BannerStart />
       <ListEvents events={events} />
+      <Footer />
     </>
   );
 };
