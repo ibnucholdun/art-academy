@@ -18,6 +18,7 @@ import ChaptersForm from "./_components/ChapterForm";
 import Banner from "@/components/ui/banner";
 import Actions from "./_components/CourseAction";
 import { currentUser } from "@/lib/auth";
+import { formatCategoryName } from "@/lib/utils";
 
 type Props = {
   params: {
@@ -104,7 +105,7 @@ const CourseIdPage: React.FC<Props> = async ({ params }) => {
               initialData={course}
               courseId={course.id}
               options={categories.map((category) => ({
-                label: category.name,
+                label: formatCategoryName(category.name),
                 value: category.id,
               }))}
             />
