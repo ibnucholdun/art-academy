@@ -5,7 +5,8 @@ import Link from "next/link";
 import { BrushIcon } from "lucide-react";
 import UserButton from "@/components/auth/UserButton";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 type Props = {
   user: any;
@@ -13,6 +14,7 @@ type Props = {
 
 const Navbar: React.FC<Props> = ({ user }) => {
   const router = useRouter();
+  const pathname = usePathname();
   return (
     <header className="bg-[#6F3823] py-4 md:py-6 animate-fade-in">
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -26,36 +28,60 @@ const Navbar: React.FC<Props> = ({ user }) => {
           {user ? (
             <>
               <Link
-                className="text-white hover:text-gray-300 transition-colors"
-                href="#">
+                className={cn(
+                  "text-white hover:text-gray-300 transition-colors",
+                  pathname === "/courses" &&
+                    "text-gray-300 underline underline-offset-4"
+                )}
+                href="/courses">
                 Courses
               </Link>
               <Link
-                className="text-white hover:text-gray-300 transition-colors"
+                className={cn(
+                  "text-white hover:text-gray-300 transition-colors",
+                  pathname === "/events" &&
+                    "text-gray-300 underline underline-offset-4"
+                )}
                 href="#">
-                Workshops
+                Events
               </Link>
               <Link
-                className="text-white hover:text-gray-300 transition-colors"
-                href="#">
+                className={cn(
+                  "text-white hover:text-gray-300 transition-colors",
+                  pathname === "/about" &&
+                    "text-gray-300 underline underline-offset-4"
+                )}
+                href="/about">
                 About
               </Link>
               <Link
-                className="text-white hover:text-gray-300 transition-colors"
-                href="#">
+                className={cn(
+                  "text-white hover:text-gray-300 transition-colors",
+                  pathname === "/contact" &&
+                    "text-gray-300 underline underline-offset-4"
+                )}
+                href="/contact">
                 Contact
               </Link>
             </>
           ) : (
             <>
               <Link
-                className="text-white hover:text-gray-300 transition-colors"
-                href="#">
+                className={cn(
+                  "text-white hover:text-gray-300 transition-colors",
+                  pathname === "/about" &&
+                    "text-gray-300 underline underline-offset-4"
+                )}
+                href="/about">
                 About
               </Link>
               <Link
-                className="text-white hover:text-gray-300 transition-colors"
-                href="#">
+                className={cn(
+                  "text-white hover:text-gray-300 transition-colors",
+                  pathname === "/contact" &&
+                    "text-gray-300 underline underline-offset-4"
+                )}
+                href="/contact">
                 Contact
               </Link>
             </>

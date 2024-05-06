@@ -19,7 +19,7 @@ const UserButton: React.FC<Props> = ({ user }) => {
       <DropdownMenuTrigger>
         <Avatar>
           {user.image === null ? (
-            <AvatarImage src={"/placeholder-profile.png"} />
+            <AvatarFallback>{user?.name[0].toUpperCase()}</AvatarFallback>
           ) : (
             <AvatarImage src={user?.image} />
           )}
