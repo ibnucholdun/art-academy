@@ -1,14 +1,18 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { BrushIcon } from "lucide-react";
 import UserButton from "@/components/auth/UserButton";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 type Props = {
   user: any;
 };
 
-const Navbar: React.FC<Props> = async ({ user }) => {
+const Navbar: React.FC<Props> = ({ user }) => {
+  const router = useRouter();
   return (
     <header className="bg-[#6F3823] py-4 md:py-6 animate-fade-in">
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -62,8 +66,9 @@ const Navbar: React.FC<Props> = async ({ user }) => {
         ) : (
           <Button
             className="rounded-full bg-white px-6 py-2 text-sm font-medium text-[#6F3823] transition-colors hover:bg-gray-200 md:px-8 md:py-3 md:text-lg animate-fade-in-up"
-            variant="default">
-            <Link href="/auth/register">Sign Up</Link>
+            variant="default"
+            onClick={() => router.push("/auth/register")}>
+            Sign Up
           </Button>
         )}
       </div>
