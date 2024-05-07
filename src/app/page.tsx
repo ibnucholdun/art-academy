@@ -1,9 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { currentRole, currentUser } from "@/lib/auth";
+import HomeView from "@/components/home/HomeView";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <Button variant="destructive" size="lg">
-      Hello
-    </Button>
-  );
+export default async function Home() {
+  const user = await currentUser();
+  const role = await currentRole();
+
+  if (role === "ADMIN") {
+    redirect("/admin/dashboard");
+  }
+
+  return <HomeView user={user} />;
 }
