@@ -1,44 +1,65 @@
 "use client";
 
-import React from "react";
-import { Card, CardContent, CardFooter } from "./ui/card";
-import { Button } from "./ui/button";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import React from "react";
+import { IconBadge } from "./IconBadge";
+import { BookOpen } from "lucide-react";
+import { formatPrice } from "@/lib/format";
+import CourseProgress from "./CourseProgress";
 
 type Props = {
+  id: string;
   title: string;
-  description: string;
   imageUrl: string;
-  link: string;
+  chaptersLength: number;
+  price: number;
+  category: string;
+  progress: number | null;
 };
 
-const CourseCard = ({ title, description, imageUrl, link }: Props) => {
-  const router = useRouter();
+const CourseCard: React.FC<Props> = ({
+  id,
+  title,
+  imageUrl,
+  chaptersLength,
+  price,
+  category,
+  progress,
+}) => {
   return (
-    <Card>
-      <CardContent>
-        <Image
-          alt={title}
-          className="rounded-md object-cover aspect-video"
-          height={225}
-          src={imageUrl}
-          width={400}
-        />
-        <div className="mt-4 animate-fade-in-up">
-          <h3 className="text-xl font-bold text-[#6F3823]">{title}</h3>
-          <p className="mt-2 text-gray-600">{description}</p>
+    <Link href={`/courses/${id}`}>
+      <div className="group hover:shadow-sm transition rounded-lg overflow-hidden cursor-pointer border p-3 h-full">
+        <div className="relative w-full aspect-video rounded-md overflow-hidden ">
+          <Image fill className="object-cover" src={imageUrl} alt={title} />
         </div>
-      </CardContent>
-      <CardFooter>
-        <Button
-          className="text-[#6F3823] animate-fade-in-up p-0"
-          variant="link"
-          onClick={() => router.push(link)}>
-          Learn More
-        </Button>
-      </CardFooter>
-    </Card>
+        <div className="flex flex-col pt-2">
+          <div className="text-lg md:text-base font-medium group-hover:text-[#6f3823] transition line-clamp-2">
+            {title}
+          </div>
+          <p className="text-xs text-muted-foreground">{category}</p>
+          <div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
+            <div className="flex items-center gap-x-1 text-slate-500">
+              <IconBadge icon={BookOpen} size="sm" />
+              <span>
+                {chaptersLength} {chaptersLength === 1 ? "Chapter" : "Chapters"}
+              </span>
+            </div>
+          </div>
+          {progress !== null && progress !== undefined ? (
+            <CourseProgress
+              variant={progress === 100 ? "success" : "default"}
+              size="sm"
+              value={progress}
+            />
+          ) : (
+            <p className="text-md md:text-sm font-medium text-salte-600">
+              {formatPrice(price)}
+            </p>
+          )}
+        </div>
+      </div>
+    </Link>
   );
 };
 

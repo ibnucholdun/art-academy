@@ -7,10 +7,16 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import CourseCard from "../CourseCard";
-import { Course } from "@prisma/client";
+import { Category, Course } from "@prisma/client";
+
+type CourseWithProgressWithCategory = Course & {
+  category: Category | null;
+  chapters: { id: string }[];
+  progress: number | null;
+};
 
 type Props = {
-  courses: Course[];
+  courses: CourseWithProgressWithCategory[] | any;
 };
 
 const ListCourses = async ({ courses }: Props) => {
@@ -32,17 +38,19 @@ const ListCourses = async ({ courses }: Props) => {
             }}
             className="w-full">
             <CarouselContent>
-              {courses.map((course) => (
+              {courses.map((course: any) => (
                 <CarouselItem
                   key={course.id}
                   className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
                     <CourseCard
-                      key={course.id}
+                      id={course.id}
                       title={course.title}
-                      description={course.description!}
                       imageUrl={course.imageUrl!}
-                      link={`/courses/${course.id}`}
+                      chaptersLength={course?.chapters.length}
+                      price={course.price!}
+                      category={course?.category?.name!}
+                      progress={course.progress}
                     />
                   </div>
                 </CarouselItem>
