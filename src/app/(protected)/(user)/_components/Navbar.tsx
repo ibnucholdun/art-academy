@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import { BrushIcon } from "lucide-react";
@@ -7,14 +5,13 @@ import UserButton from "@/components/auth/UserButton";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { currentUser } from "@/lib/auth";
+import NavbarListItem from "./NavbarListItem";
 
-type Props = {
-  user: any;
-};
+type Props = {};
 
-const Navbar: React.FC<Props> = ({ user }) => {
-  const router = useRouter();
-  const pathname = usePathname();
+const Navbar: React.FC<Props> = async () => {
+  const user = await currentUser();
   return (
     <header className="bg-[#6F3823] py-4 md:py-6 animate-fade-in">
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -24,7 +21,8 @@ const Navbar: React.FC<Props> = ({ user }) => {
           <BrushIcon className="w-8 h-8 text-white" />
           Art Academy
         </Link>
-        <nav className="hidden md:flex items-center space-x-6 animate-fade-in-up">
+        <NavbarListItem user={user} />
+        {/* <nav className="hidden md:flex items-center space-x-6 animate-fade-in-up">
           {user ? (
             <>
               <Link
@@ -96,7 +94,7 @@ const Navbar: React.FC<Props> = ({ user }) => {
             onClick={() => router.push("/auth/register")}>
             Sign Up
           </Button>
-        )}
+        )} */}
       </div>
     </header>
   );

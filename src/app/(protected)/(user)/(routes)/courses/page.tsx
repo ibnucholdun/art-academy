@@ -19,9 +19,9 @@ const CoursePage = async ({ searchParams }: Props) => {
     ...searchParams,
   });
   return (
-    <>
+    <div className="min-h-screen container mx-auto my-12">
       <CoursePageView user={user} categories={categories} courses={courses} />
-    </>
+    </div>
   );
 };
 

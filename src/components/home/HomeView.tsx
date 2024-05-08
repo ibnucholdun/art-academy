@@ -9,11 +9,9 @@ import BannerStart from "./BannerStart";
 import ListEvents from "./ListEvents";
 import Footer from "@/app/(protected)/(user)/_components/Footer";
 
-type Props = {
-  user: any;
-};
+type Props = {};
 
-const HomeView: React.FC<Props> = async ({ user }) => {
+const HomeView: React.FC<Props> = async () => {
   const courses = await prisma.course.findMany({
     where: {
       isPublished: true,
@@ -45,7 +43,7 @@ const HomeView: React.FC<Props> = async ({ user }) => {
 
   return (
     <>
-      <Navbar user={user} />
+      <Navbar />
       <HeroSection />
       <ListCourses courses={courses} />
       <ListTestimonials />
