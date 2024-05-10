@@ -9,7 +9,7 @@ import {
 import CourseCard from "../CourseCard";
 import { Category, Course } from "@prisma/client";
 
-type CourseWithProgressWithCategory = Course & {
+export type CourseWithProgressWithCategory = Course & {
   category: Category | null;
   chapters: { id: string }[];
   progress: number | null;
