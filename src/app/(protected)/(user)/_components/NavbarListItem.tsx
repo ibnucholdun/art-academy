@@ -34,7 +34,7 @@ const NavbarListItem = ({ user }: Props) => {
                 pathname === "/events" &&
                   "text-gray-300 underline underline-offset-4"
               )}
-              href="#">
+              href="/events">
               Events
             </Link>
             <Link
