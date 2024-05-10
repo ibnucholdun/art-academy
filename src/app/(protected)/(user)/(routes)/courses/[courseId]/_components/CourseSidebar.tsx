@@ -5,6 +5,7 @@ import { Chapter, Course, UserProgress } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import { currentUser } from "@/lib/auth";
 import CourseSidebarItem from "./CourseSidebarItem";
+import CourseProgress from "@/components/CourseProgress";
 
 type Props = {
   course: Course & {
@@ -33,7 +34,11 @@ const CourseSidebar: React.FC<Props> = async ({ course, progressCount }) => {
         <h1 className="font-semibold">{course.title}</h1>
       </div>
       <div className="border rounded-md bg-white">
-        <h1 className="p-8 font-semibold">Progress bar</h1>
+        {purchase && (
+          <div className="p-6">
+            <CourseProgress variant="success" value={progressCount} />
+          </div>
+        )}
         <div className="h-full overflow-y-auto shadow-sm">
           <div className="flex flex-col w-full">
             {course.chapters.map((chapter) => (

@@ -12,15 +12,52 @@ import { useConfettiStore } from "@/hooks/useConfettiStore";
 
 type Props = {
   isLocked: boolean;
+  completedOnEnd: boolean;
+  courseId: string;
+  chapterId: string;
+  nextChapterId?: string | null;
 };
 
-const VideoPlayer: React.FC<Props> = ({ isLocked }) => {
+const VideoPlayer: React.FC<Props> = ({
+  isLocked,
+  completedOnEnd,
+  courseId,
+  chapterId,
+  nextChapterId,
+}) => {
   const [isReady, setIsReady] = useState(false);
   const router = useRouter();
+  const confetti = useConfettiStore();
 
   useEffect(() => {
     setIsReady(true);
   }, [router.refresh]);
+
+  const onEnd = async () => {
+    try {
+      if (completedOnEnd) {
+        await axios.put(
+          `/api/courses/${courseId}/chapters/${chapterId}/progress`,
+          {
+            isCompleted: true,
+          }
+        );
+
+        if (!nextChapterId) {
+          confetti.onOpen();
+        }
+
+        toast.success("Chapter completed successfully");
+        router.refresh();
+
+        if (nextChapterId) {
+          router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
+        }
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
 
   return (
     <div className="relative aspect-video">
