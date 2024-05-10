@@ -42,7 +42,8 @@ const VideoPlayer: React.FC<Props> = ({ isLocked }) => {
           className={cn(!isReady && "hidden", "h-full w-full")}
           onCanPlay={() => setIsReady(true)}
           onEnded={() => {}}
-          autoPlay>
+          autoPlay
+          controls>
           <source
             src="https://utfs.io/f/e28868b3-5cae-405e-8f64-d8213719681d-okd1wl.webm"
             type="video/mp4"
