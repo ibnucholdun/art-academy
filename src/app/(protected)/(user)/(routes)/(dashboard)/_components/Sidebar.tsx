@@ -11,7 +11,7 @@ type Props = {};
 const Sidebar = async (props: Props) => {
   const user: any = await currentUser();
   return (
-    <div className="flex h-full max-h-screen flex-col border-r border-[#e5e5e5] bg-white p-6 dark:border-[#262626] dark:bg-[#1a1a1a]">
+    <div className="flex h-full flex-col border-r border-[#e5e5e5] bg-white p-6 dark:border-[#262626] dark:bg-[#1a1a1a]">
       <div className="flex h-[120px] items-center justify-center relative">
         <Avatar className="h-[80px] w-[80px]">
           {user.image === null ? (

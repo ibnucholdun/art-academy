@@ -45,7 +45,7 @@ const CourseLayout: React.FC<Props> = async ({ children, params }) => {
   const progressCount = await getProgress(user?.id!, course.id);
 
   return (
-    <div className="h-screen bg-slate-300/20">
+    <div className="min-h-screen bg-slate-300/20">
       <div className="container md:py-12">
         <BackButton label="Back to courses" href="/courses" />
         <div className=" md:flex w-full mt-6">

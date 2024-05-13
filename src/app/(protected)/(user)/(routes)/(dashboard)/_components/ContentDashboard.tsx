@@ -15,7 +15,7 @@ const ContentDashboard = async ({ children }: Props) => {
         <HeaderName />
         <UserButton user={user} />
       </header>
-      <main className="flex flex-1 flex-col gap-8 p-6">{children}</main>
+      <main className="flex flex-1 flex-col gap-7 p-6">{children}</main>
     </>
   );
 };
