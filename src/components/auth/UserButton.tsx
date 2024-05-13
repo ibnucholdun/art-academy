@@ -46,27 +46,29 @@ const UserButton: React.FC<Props> = ({ user }) => {
         <hr className="my-2 h-px border-0 bg-slate-300" />
         <DropdownMenuItem className="hover:bg-white">
           {pathname === "/my-dashboard" ? (
-            <>
+            <Link href="/" className="flex w-full">
               <Home className="mr-2 h-4 w-4" />
-              <Link href="/">Back to Home</Link>
-            </>
+              Back to Home
+            </Link>
           ) : (
-            <>
+            <Link href="/my-dashboard" className="flex w-full">
               <LayoutDashboard className="mr-2 h-4 w-4" />
-              <Link href="/my-dashboard">Dashboard</Link>
-            </>
+              Dashboard
+            </Link>
           )}
         </DropdownMenuItem>
-        <DropdownMenuItem className="hover:bg-white ">
-          <User className="mr-2 h-4 w-4" />
-          <Link href="/profile">Profile</Link>
+        <DropdownMenuItem className="hover:bg-white">
+          <Link href="/profile/edit-profile" className="w-full flex">
+            <User className="mr-2 h-4 w-4" />
+            Profile
+          </Link>
         </DropdownMenuItem>
-        <LogoutButton>
-          <DropdownMenuItem className="hover:bg-white">
+        <DropdownMenuItem className="hover:bg-white">
+          <LogoutButton>
             <LogOut className="mr-2 h-4 w-4" />
             Logout
-          </DropdownMenuItem>
-        </LogoutButton>
+          </LogoutButton>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -12,7 +12,7 @@ const LogoutButton: React.FC<Props> = ({ children }) => {
     logout();
   };
   return (
-    <span onClick={onClick} className="cursor-pointer">
+    <span onClick={onClick} className="cursor-pointer flex w-full">
       {children}
     </span>
   );
