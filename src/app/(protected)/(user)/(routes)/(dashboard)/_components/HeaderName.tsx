@@ -7,6 +7,7 @@ import React from "react";
 
 type Props = {};
 
+const activeCourses = ["my-courses"];
 const HeaderName = (props: Props) => {
   const pathname = usePathname();
   return (
@@ -18,7 +19,7 @@ const HeaderName = (props: Props) => {
       <div className="w-full flex-1">
         <h1 className="text-lg font-semibold text-[#5c4033] dark:text-white">
           {pathname === "/my-dashboard" && "Dashboard"}
-          {pathname === "/my-courses" && "Courses"}
+          {activeCourses.includes(pathname.split("/")[1]) && "Courses"}
           {pathname === "/my-events" && "Events"}
         </h1>
       </div>

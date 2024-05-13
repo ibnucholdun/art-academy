@@ -37,7 +37,7 @@ const CourseCard = ({ course }: Props) => {
         </div>
         <div className="flex justify-end w-full">
           <Button onClick={() => router.push(`/courses/${course.id}`)}>
-            Continue
+            {course.progress === 100 ? "Review" : "Continue"}
           </Button>
         </div>
       </div>
