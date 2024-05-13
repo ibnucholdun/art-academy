@@ -46,7 +46,7 @@ const SidebarRoute = (props: Props) => {
             "bg-[#f5f5f5] dark:bg-[#262626]": pathname === "/my-events",
           }
         )}
-        href="my-events">
+        href="/my-events">
         <CalendarRange className="h-4 w-4" />
         Events
       </Link>
