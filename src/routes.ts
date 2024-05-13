@@ -5,6 +5,8 @@
  */
 export const publicRoutes = [
   "/",
+  "/about",
+  "/contact",
   "/auth/new-verification",
   "/api/uploadthing",
   "/api/webhook",

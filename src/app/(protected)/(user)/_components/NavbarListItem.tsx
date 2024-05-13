@@ -11,6 +11,9 @@ type Props = {
   user: any;
 };
 
+const activeCourse = ["courses"];
+const activeEvent = ["events"];
+
 const NavbarListItem = ({ user }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -22,7 +25,7 @@ const NavbarListItem = ({ user }: Props) => {
             <Link
               className={cn(
                 "text-white hover:text-gray-300 transition-colors",
-                pathname === "/courses" &&
+                activeCourse.includes(pathname.split("/")[1]) &&
                   "text-gray-300 underline underline-offset-4"
               )}
               href="/courses">
@@ -31,10 +34,10 @@ const NavbarListItem = ({ user }: Props) => {
             <Link
               className={cn(
                 "text-white hover:text-gray-300 transition-colors",
-                pathname === "/events" &&
+                activeEvent.includes(pathname.split("/")[1]) &&
                   "text-gray-300 underline underline-offset-4"
               )}
-              href="#">
+              href="/events">
               Events
             </Link>
             <Link
