@@ -73,3 +73,11 @@ export const FormTimeSchema = z.object({
 export const FormLocationSchema = z.object({
   location: z.string().min(1),
 });
+
+export const FormProfileSchema = z.object({
+  name: z.optional(z.string()),
+  role: z.enum([UserRole.USER, UserRole.ADMIN]),
+  email: z.optional(z.string().email()),
+  image: z.optional(z.string()),
+  aboutMe: z.optional(z.string()),
+});
