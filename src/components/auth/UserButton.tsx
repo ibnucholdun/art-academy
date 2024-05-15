@@ -17,6 +17,8 @@ type Props = {
   user: any;
 };
 
+const path = ["my-dashboard", "my-courses", "my-events"];
+
 const UserButton: React.FC<Props> = ({ user }) => {
   const pathname = usePathname();
   return (
@@ -45,7 +47,7 @@ const UserButton: React.FC<Props> = ({ user }) => {
         </DropdownMenuItem>
         <hr className="my-2 h-px border-0 bg-slate-300" />
         <DropdownMenuItem className="hover:bg-white">
-          {pathname === "/my-dashboard" ? (
+          {path.includes(pathname.split("/").filter(Boolean)[0]) ? (
             <Link href="/" className="flex w-full">
               <Home className="mr-2 h-4 w-4" />
               Back to Home
