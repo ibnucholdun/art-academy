@@ -81,7 +81,7 @@ const ResetPasswordForm = (props: Props) => {
           {error && <FormError message={error} />}
           {success && <FormSuccess message={success} />}
           <Button type="submit" disabled={isPending} className="w-full">
-            Reset Password
+            Sent Email to Reset Password
           </Button>
         </form>
       </Form>
