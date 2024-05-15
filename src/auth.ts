@@ -58,6 +58,8 @@ export const {
       if (session.user) {
         session.user.name = token.name;
         session.user.email = token.email as string;
+        session.user.image = token.image as string;
+        session.user.aboutMe = token.aboutMe as string;
         session.user.isOAuth = token.isOAuth as boolean;
       }
 
@@ -75,6 +77,8 @@ export const {
       token.isOAuth = !!existingAccount;
       token.name = existingUser.name;
       token.email = existingUser.email;
+      token.image = existingUser.image;
+      token.aboutMe = existingUser.aboutMe;
       token.role = existingUser.role;
       return token;
     },

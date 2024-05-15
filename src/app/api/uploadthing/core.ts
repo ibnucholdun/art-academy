@@ -30,6 +30,11 @@ export const ourFileRouter = {
     .onUploadComplete(() => {
       console.log("onUploadComplete");
     }),
+  profileImage: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
+    .middleware(() => handleAuth())
+    .onUploadComplete(() => {
+      console.log("onUploadComplete");
+    }),
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;
