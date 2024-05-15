@@ -81,3 +81,7 @@ export const FormProfileSchema = z.object({
   image: z.optional(z.string()),
   aboutMe: z.optional(z.string()),
 });
+
+export const FormEmailSchema = z.object({
+  email: z.string().email(),
+});

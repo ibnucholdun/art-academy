@@ -18,7 +18,7 @@ const HeaderName = (props: Props) => {
       <div className="w-full flex-1">
         <h1 className="text-lg font-semibold text-[#5c4033] dark:text-white">
           {pathname === "/profile/edit-profile" && "Edit Profile"}
-          {pathname === "/profile/new-password" && "New Password"}
+          {pathname === "/profile/account" && "Account"}
         </h1>
       </div>
     </>
