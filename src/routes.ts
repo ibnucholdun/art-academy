@@ -8,6 +8,7 @@ export const publicRoutes = [
   "/about",
   "/contact",
   "/auth/new-verification",
+  "/auth/reset-password",
   "/api/uploadthing",
   "/api/webhook",
 ];

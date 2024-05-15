@@ -22,12 +22,13 @@ import FormError from "../FormError";
 import FormSuccess from "../FormSuccess";
 import { EyeIcon, EyeOff } from "lucide-react";
 import { login } from "@/actions/login";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {};
 
 const LoginForm = (props: Props) => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [visible, setVisible] = useState(false);
@@ -117,6 +118,14 @@ const LoginForm = (props: Props) => {
                       </Button>
                     </div>
                   </FormControl>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="link"
+                    className="px-0 text-xs text-muted-foreground"
+                    onClick={() => router.push("/auth/reset-password")}>
+                    Forgot password?
+                  </Button>
                   <FormMessage />
                 </FormItem>
               )}
