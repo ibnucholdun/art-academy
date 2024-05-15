@@ -1,6 +1,7 @@
 import React from "react";
 import EmailForm from "./_components/EmailForm";
 import { currentUser } from "@/lib/auth";
+import PasswordForm from "./_components/PasswordForm";
 
 type Props = {};
 
@@ -11,6 +12,7 @@ const AccountPage = async (props: Props) => {
   return (
     <>
       <EmailForm user={user} />
+      <PasswordForm user={user} />
     </>
   );
 };
