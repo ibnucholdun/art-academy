@@ -14,10 +14,10 @@ const Sidebar = async (props: Props) => {
         <Avatar className="h-[80px] w-[80px]">
           {user.image === null ? (
             <AvatarFallback className="text-4xl">
-              {user?.name[0].toUpperCase()}
+              {user?.name[0].toUpperCase() ?? ""}
             </AvatarFallback>
           ) : (
-            <AvatarImage src={user?.image} />
+            <AvatarImage src={user?.image ?? ""} />
           )}
         </Avatar>
         <Link
@@ -27,7 +27,7 @@ const Sidebar = async (props: Props) => {
         </Link>
       </div>
       <p className="text-lg font-semibold text-[#5c4033] dark:text-white text-center">
-        {user?.name}
+        {user?.name ?? ""}
       </p>
       <div className="flex-1 overflow-auto py-4">
         <SidebarRoute />

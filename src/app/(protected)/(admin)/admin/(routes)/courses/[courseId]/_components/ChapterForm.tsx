@@ -133,7 +133,7 @@ const ChaptersForm: React.FC<Props> = ({ initialData, courseId }) => {
           <ChapterList
             onEdit={onEdit}
             onReorder={onReorder}
-            items={initialData.chapters || []}
+            items={initialData.chapters ?? []}
           />
         </div>
       )}

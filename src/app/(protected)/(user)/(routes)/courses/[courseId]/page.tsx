@@ -23,7 +23,7 @@ const CourseIdPage: React.FC<Props> = async ({ params }) => {
     },
   });
 
-  if (!course) redirect("/");
+  if (course == null) redirect("/");
 
   return redirect(`/courses/${course.id}/chapters/${course.chapters[0].id}`);
 };

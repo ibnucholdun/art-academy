@@ -33,7 +33,7 @@ const EmailForm = ({ user }: Props) => {
   const form = useForm<z.infer<typeof FormEmailSchema>>({
     resolver: zodResolver(FormEmailSchema),
     defaultValues: {
-      email: user?.email || undefined,
+      email: user?.email ?? "",
     },
   });
 
