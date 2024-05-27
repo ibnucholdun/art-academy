@@ -1,5 +1,3 @@
-import { TriangleAlert } from "lucide-react";
-import React from "react";
 import CardWrapper from "./CardWrapper";
 
 type Props = {};

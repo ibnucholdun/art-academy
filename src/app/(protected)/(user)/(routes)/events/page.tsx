@@ -1,8 +1,5 @@
-import React from "react";
-import DevelopmentCard from "./_components/DevelopmentCard";
 import { currentUser } from "@/lib/auth";
-import Navbar from "../../_components/Navbar";
-import Footer from "../../_components/Footer";
+import DevelopmentCard from "./_components/DevelopmentCard";
 
 type Props = {};
 

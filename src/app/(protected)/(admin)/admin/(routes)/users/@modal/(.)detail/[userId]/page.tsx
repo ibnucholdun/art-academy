@@ -1,7 +1,6 @@
-import React, { useState } from "react";
 import Modal from "@/components/Modal";
-import FormDetailUser from "../../../_components/FormDetailUser";
 import { getUserByUserId } from "@/data/user";
+import FormDetailUser from "../../../_components/FormDetailUser";
 
 type Props = {
   params: {

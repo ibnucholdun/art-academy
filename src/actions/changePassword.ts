@@ -1,15 +1,13 @@
 "use server";
 
-import * as z from "zod";
 import bcrypt from "bcryptjs";
+import * as z from "zod";
 
-import prisma from "@/lib/prisma";
 import { unstable_update } from "@/auth";
-import { FormPasswordSchema } from "@/schemas";
-import { getUserByEmail, getUserByUserId } from "@/data/user";
+import { getUserByUserId } from "@/data/user";
 import { currentUser } from "@/lib/auth";
-import { generateVerificationToken } from "@/lib/tokens";
-import { sendVerificationEmail } from "@/lib/mail";
+import prisma from "@/lib/prisma";
+import { FormPasswordSchema } from "@/schemas";
 
 export const changePassword = async (
   values: z.infer<typeof FormPasswordSchema>

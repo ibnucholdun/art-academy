@@ -1,10 +1,8 @@
-import React from "react";
-import SidebarRoute from "./SidebarRoute";
-import { currentUser } from "@/lib/auth";
-import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { currentUser } from "@/lib/auth";
 import { Pencil } from "lucide-react";
 import Link from "next/link";
+import SidebarRoute from "./SidebarRoute";
 
 type Props = {};
 

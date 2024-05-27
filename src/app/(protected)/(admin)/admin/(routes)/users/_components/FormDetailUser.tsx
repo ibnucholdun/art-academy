@@ -1,15 +1,15 @@
 "use client";
 
-import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { redirect } from "next/navigation";
+import * as z from "zod";
 
 import { editUser } from "@/actions/editUser";
-import { UserRole } from "@prisma/client";
 import { EditUserSchema } from "@/schemas";
+import { UserRole } from "@prisma/client";
 
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -25,11 +25,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 
-import { Input } from "@/components/ui/input";
 import FormError from "@/components/FormError";
 import FormSuccess from "@/components/FormSuccess";
+import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 
 type Props = {

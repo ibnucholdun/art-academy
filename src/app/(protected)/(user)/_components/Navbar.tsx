@@ -1,10 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { BrushIcon } from "lucide-react";
-import UserButton from "@/components/auth/UserButton";
-import { Button } from "@/components/ui/button";
-import { usePathname, useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { currentUser } from "@/lib/auth";
 import NavbarListItem from "./NavbarListItem";
 

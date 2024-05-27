@@ -1,4 +1,4 @@
-import { currentRole, currentUser } from "@/lib/auth";
+import { currentRole } from "@/lib/auth";
 import HomeView from "@/components/home/HomeView";
 import { redirect } from "next/navigation";
 
