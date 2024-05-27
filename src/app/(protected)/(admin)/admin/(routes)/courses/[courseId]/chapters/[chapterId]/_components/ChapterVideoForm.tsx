@@ -65,13 +65,13 @@ const ChapterVideoForm: React.FC<Props> = ({
         </Button>
       </div>
       {!isEditing &&
-        (!initialData?.videoUrl ? (
+        (!initialData?.videoUrl ?? false ? (
           <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
             <Video className="h-10 w-10 text-slate-500" />
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
-            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
+            <MuxPlayer playbackId={initialData?.muxData?.playbackId ?? ""} />
           </div>
         ))}
       {isEditing && (

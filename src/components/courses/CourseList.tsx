@@ -25,7 +25,7 @@ const CoursesList: React.FC<Props> = ({ items }) => {
             imageUrl={item.imageUrl!}
             chaptersLength={item.chapters.length}
             price={item.price!}
-            category={item?.category?.name!}
+            category={item?.category?.name ?? ""}
             progress={item.progress}
           />
         ))}

@@ -47,9 +47,9 @@ const ListCourses = async ({ courses }: Props) => {
                       id={course.id}
                       title={course.title}
                       imageUrl={course.imageUrl!}
-                      chaptersLength={course?.chapters.length}
+                      chaptersLength={course?.chapters?.length ?? 0}
                       price={course.price!}
-                      category={course?.category?.name!}
+                      category={course?.category?.name ?? ""}
                       progress={course.progress}
                     />
                   </div>

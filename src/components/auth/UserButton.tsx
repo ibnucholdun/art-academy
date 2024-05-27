@@ -37,12 +37,14 @@ const UserButton: React.FC<Props> = ({ user }) => {
           <div className="flex items-center justify-center gap-x-2">
             <Avatar>
               {user.image === null ? (
-                <AvatarFallback>{user?.name[0].toUpperCase()}</AvatarFallback>
+                <AvatarFallback>
+                  {user?.name?.[0]?.toUpperCase() ?? ""}
+                </AvatarFallback>
               ) : (
-                <AvatarImage src={user?.image} />
+                <AvatarImage src={user?.image ?? ""} />
               )}
             </Avatar>
-            <p className="">{user?.name}</p>
+            <p className="">{user?.name ?? ""}</p>
           </div>
         </DropdownMenuItem>
         <hr className="my-2 h-px border-0 bg-slate-300" />

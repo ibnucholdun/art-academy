@@ -81,7 +81,9 @@ const EventTimeForm: React.FC<Props> = ({ initialData, eventId }) => {
             "text-sm mt-2",
             !initialData.time && "text-slate-500 italic"
           )}>
-          {initialData?.time ? format(initialData.time, "PPP") : "No time set"}
+          {initialData && initialData?.time
+            ? format(initialData.time, "PPP")
+            : "No time set"}
         </p>
       )}
       {isEditing && (
