@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import FormError from "@/components/FormError";
 import FormSuccess from "@/components/FormSuccess";
 import { Button } from "@/components/ui/button";
-import { EyeIcon, EyeOff, FileWarning, TriangleAlert } from "lucide-react";
+import { EyeIcon, EyeOff, TriangleAlert } from "lucide-react";
 import { changePassword } from "@/actions/changePassword";
 
 type Props = {

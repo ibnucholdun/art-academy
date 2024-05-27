@@ -21,19 +21,12 @@ const ChapterIdPage: React.FC<Props> = async ({ params }) => {
 
   if (!user?.id && user?.role !== "USER") return redirect("/");
 
-  const {
-    chapter,
-    course,
-    muxData,
-    attachments,
-    nextChapter,
-    userProgress,
-    purchase,
-  } = await getChapter({
-    userId: user?.id!,
-    courseId: params.courseId,
-    chapterId: params.chapterId,
-  });
+  const { chapter, course, attachments, nextChapter, userProgress, purchase } =
+    await getChapter({
+      userId: user?.id!,
+      courseId: params.courseId,
+      chapterId: params.chapterId,
+    });
 
   if (!chapter || !course) return redirect("/");
 

@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import MuxPlayer from "@mux/mux-player-react";
-import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import { Loader2, Lock } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
-import { cn } from "@/lib/utils";
 import { useConfettiStore } from "@/hooks/useConfettiStore";
+import { cn } from "@/lib/utils";
 
 type Props = {
   isLocked: boolean;
@@ -78,7 +77,7 @@ const VideoPlayer: React.FC<Props> = ({
         <video
           className={cn(!isReady && "hidden", "h-full w-full")}
           onCanPlay={() => setIsReady(true)}
-          onEnded={() => {}}
+          onEnded={() => onEnd()}
           autoPlay
           controls>
           <source
