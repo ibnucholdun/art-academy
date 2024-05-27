@@ -4,6 +4,15 @@ import React from "react";
 import { DataTable } from "./_components/DataTabel";
 import { columns } from "./_components/Columns";
 import prisma from "@/lib/prisma";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin - Events Management",
+  description: "Admin - Events Management",
+  icons: {
+    icon: "/logo.svg",
+  },
+};
 
 type Props = {};
 

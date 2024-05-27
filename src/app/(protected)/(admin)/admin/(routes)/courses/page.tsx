@@ -3,6 +3,15 @@ import { columns } from "./_components/Columns";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { currentUser } from "@/lib/auth";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin - Courses Management",
+  description: "Admin - Courses Management",
+  icons: {
+    icon: "/logo.svg",
+  },
+};
 
 const CoursesAdminPage = async () => {
   const user = await currentUser();

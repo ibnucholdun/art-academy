@@ -1,6 +1,15 @@
 import React from "react";
 import Sidebar from "./_components/Sidebar";
 import ContentDashboard from "./_components/ContentDashboard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Art Academy - Profile",
+  description: "Art Academy - Profile",
+  icons: {
+    icon: "/logo.svg",
+  },
+};
 
 type Props = {
   children: React.ReactNode;
