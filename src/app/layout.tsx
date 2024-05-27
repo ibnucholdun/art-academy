@@ -9,8 +9,11 @@ import ConfettiProvider from "@/components/providers/ConfettiProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Serrla App",
-  description: "Serrla App",
+  title: "Art Academy",
+  description: "Art Academy",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default async function RootLayout({

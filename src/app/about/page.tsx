@@ -4,6 +4,15 @@ import Footer from "../(protected)/(user)/_components/Footer";
 import BannerSection from "./_components/BannerSection";
 import Image from "next/image";
 import StorySection from "./_components/StorySection";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Art Academy - About",
+  description: "Art Academy - About",
+  icons: {
+    icon: "/logo.svg",
+  },
+};
 
 type Props = {};
 

@@ -1,6 +1,15 @@
 import React from "react";
 import Navbar from "../(protected)/(user)/_components/Navbar";
 import Footer from "../(protected)/(user)/_components/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Art Academy - Contact",
+  description: "Art Academy - Contact",
+  icons: {
+    icon: "/logo.svg",
+  },
+};
 
 type Props = {};
 
